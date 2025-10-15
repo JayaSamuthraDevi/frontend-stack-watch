@@ -1,0 +1,38 @@
+{
+  "name": "carbon-new",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@carbon/charts": "^1.23.14",
+    "@carbon/charts-react": "^1.23.14",
+    "@carbon/react": "^1.85.0",
+    "@carbon/styles": "^1.86.1",
+    "@reduxjs/toolkit": "^2.8.2",
+    "jsonwebtoken": "^9.0.2",
+    "next": "15.3.4",
+    "next-themes": "^0.4.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
+    "zod": "^4.0.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/d3": "^7.4.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^20.19.9",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.4",
+    "sass": "^1.89.2",
+    "typescript": "^5"
+  }
+}

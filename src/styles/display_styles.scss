@@ -1,0 +1,41 @@
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.items-center {
+  @extend .flex;
+  align-items: center;
+}
+
+.justify-center {
+  @extend .flex;
+  justify-content: center;
+}
+
+.justify-space-around {
+  @extend .flex;
+  @extend .items-center;
+  justify-content: space-around;
+  gap: 4rem;
+}
+
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+.object-contain {
+  object-fit: contain;
+} 

@@ -1,0 +1,75 @@
+@use '@carbon/type' as type;
+@use '@carbon/layout' as layout;
+@use 'sass:map';
+
+@include type.type-classes;
+
+
+// Get Carbon spacing tokens map (values are usually in rem)
+$spacing-map: layout.$spacing;
+
+// Generate margin classes: `.m-{key}` for all sides margin
+@each $key, $value in $spacing-map {
+  .m-#{$key} {
+    margin: $value !important;
+  }
+
+  .mt-#{$key} {
+    margin-top: $value !important;
+  }
+
+  .mb-#{$key} {
+    margin-bottom: $value !important;
+  }
+
+  .ml-#{$key} {
+    margin-left: $value !important;
+  }
+
+  .mr-#{$key} {
+    margin-right: $value !important;
+  }
+
+  .mx-#{$key} {
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+
+  .my-#{$key} {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
+  }
+}
+
+// Generate padding classes: `.p-{key}` for all sides padding
+@each $key, $value in $spacing-map {
+  .p-#{$key} {
+    padding: $value !important;
+  }
+
+  .pt-#{$key} {
+    padding-top: $value !important;
+  }
+
+  .pb-#{$key} {
+    padding-bottom: $value !important;
+  }
+
+  .pl-#{$key} {
+    padding-left: $value !important;
+  }
+
+  .pr-#{$key} {
+    padding-right: $value !important;
+  }
+
+  .px-#{$key} {
+    padding-left: $value !important;
+    padding-right: $value !important;
+  }
+
+  .py-#{$key} {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+}

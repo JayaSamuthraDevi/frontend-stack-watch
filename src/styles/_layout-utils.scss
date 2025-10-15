@@ -1,0 +1,195 @@
+// =========================
+// Carbon breakpoints
+// =========================
+$carbon-breakpoints: (
+  sm: 320px,
+  md: 672px,
+  lg: 1056px,
+  xlg: 1312px,
+  max: 1584px
+);
+
+// =========================
+// Spacing scale (like Tailwind's scale)
+// Add px, rem, %, auto, etc.
+// =========================
+$base-spacing-scale: (
+  0: 0,
+  '0.5': 2px,// fractional needs quotes
+  1: 4px,
+  2: 8px,
+  3: 12px,
+  4: 16px,
+  5: 20px,
+  6: 24px,
+  8: 32px,
+  10: 40px,
+  12: 48px,
+  16: 64px,
+  20: 80px,
+  auto: auto,
+  full: 100%,
+  '1/2': 50%,// fractions must be quoted
+  '1/3': 33.333%,
+  '2/3': 66.666%,
+  '1/4': 25%,
+  '3/4': 75%
+);
+
+$custom-spacing-scale: (
+  72: 18rem,
+  'sidebar': 260px,
+  'nav-height': 64px
+);
+
+// merge them into final spacing scale
+$spacing-scale: map-merge($base-spacing-scale, $custom-spacing-scale);
+
+// =========================
+// Helper: escape `/` and `.`
+// =========================
+@function escape-key($key) {
+  $key-str: "#{$key}";
+  $key-str: str-replace($key-str, "/", "\\/"); // escape slash
+  $key-str: str-replace($key-str, ".", "\\."); // escape dot
+  @return $key-str;
+}
+
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1)+$replace +str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+// =========================
+// Utility Generator Mixin
+// =========================
+@mixin generate-spacing($prop, $prefix) {
+  @each $key, $value in $spacing-scale {
+    $escaped-key: escape-key($key);
+
+    // positive
+    .#{$prefix}-#{$escaped-key} {
+      #{$prop}: #{$value} !important;
+    }
+
+    // negative (only if numeric value)
+    @if (type-of($value)==number) {
+      .-#{$prefix}-#{$escaped-key} {
+        #{$prop}: -#{$value} !important;
+      }
+    }
+  }
+}
+
+// =========================
+// Base Utilities
+// =========================
+
+// Margins
+@include generate-spacing(margin, m);
+@include generate-spacing(margin-top, mt);
+@include generate-spacing(margin-right, mr);
+@include generate-spacing(margin-bottom, mb);
+@include generate-spacing(margin-left, ml);
+@include generate-spacing(margin-inline, mx);
+@include generate-spacing(margin-block, my);
+
+// Padding
+@include generate-spacing(padding, p);
+@include generate-spacing(padding-top, pt);
+@include generate-spacing(padding-right, pr);
+@include generate-spacing(padding-bottom, pb);
+@include generate-spacing(padding-left, pl);
+@include generate-spacing(padding-inline, px);
+@include generate-spacing(padding-block, py);
+
+// Gap (for flex/grid)
+@include generate-spacing(gap, gap);
+@include generate-spacing(row-gap, gap-y);
+@include generate-spacing(column-gap, gap-x);
+
+// =========================
+// Responsive Variants
+// =========================
+@each $breakpoint, $min-width in $carbon-breakpoints {
+  @media (min-width: #{$min-width}) {
+    // Margins
+    @include generate-spacing(margin, m-#{$breakpoint});
+    @include generate-spacing(margin-top, mt-#{$breakpoint});
+    @include generate-spacing(margin-right, mr-#{$breakpoint});
+    @include generate-spacing(margin-bottom, mb-#{$breakpoint});
+    @include generate-spacing(margin-left, ml-#{$breakpoint});
+    @include generate-spacing(margin-inline, mx-#{$breakpoint});
+    @include generate-spacing(margin-block, my-#{$breakpoint});
+
+    // Padding
+    @include generate-spacing(padding, p-#{$breakpoint});
+    @include generate-spacing(padding-top, pt-#{$breakpoint});
+    @include generate-spacing(padding-right, pr-#{$breakpoint});
+    @include generate-spacing(padding-bottom, pb-#{$breakpoint});
+    @include generate-spacing(padding-left, pl-#{$breakpoint});
+    @include generate-spacing(padding-inline, px-#{$breakpoint});
+    @include generate-spacing(padding-block, py-#{$breakpoint});
+
+    // Gap
+    @include generate-spacing(gap, gap-#{$breakpoint});
+    @include generate-spacing(row-gap, gap-y-#{$breakpoint});
+    @include generate-spacing(column-gap, gap-x-#{$breakpoint});
+  }
+}
+
+// =========================
+// Width scale
+// =========================
+$width-scale: (
+  auto: auto,
+  full: 100%,
+  screen: 100vw,
+  min: min-content,
+  max: max-content,
+  fit: fit-content,
+  '1/2': 50%,
+  '1/3': 33.333%,
+  '2/3': 66.666%,
+  '1/4': 25%,
+  '3/4': 75%,
+  '1/5': 20%,
+  '2/5': 40%,
+  '3/5': 60%,
+  '4/5': 80%
+);
+
+// merge spacing values (like px/rem) into width scale
+$width-scale: map-merge($width-scale, $spacing-scale);
+
+// =========================
+// Width utility generator
+// =========================
+@mixin generate-width($prefix) {
+  @each $key, $value in $width-scale {
+    $escaped-key: escape-key($key);
+
+    .#{$prefix}-#{$escaped-key} {
+      width: #{$value} !important;
+    }
+  }
+}
+
+// =========================
+// Base Width Classes
+// =========================
+@include generate-width("w");
+
+// =========================
+// Responsive Width Classes
+// =========================
+@each $breakpoint, $min-width in $carbon-breakpoints {
+  @media (min-width: #{$min-width}) {
+    @include generate-width("w-#{$breakpoint}");
+  }
+}

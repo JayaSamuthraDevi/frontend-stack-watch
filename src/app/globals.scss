@@ -1,0 +1,16 @@
+@use '@carbon/react';
+@use "@/styles/overrides.scss";
+@use '@/styles/custom.scss';
+@use '@/styles/themes.scss';
+@use '@/styles/text_styles.scss';
+@use '@/styles/display_styles.scss';
+@use '@/styles/_layout-utils.scss';
+@use '@/styles/font_styles.scss';
+@use '@/styles/carbon-utils.scss';
+@use '@carbon/charts-react/dist/styles.css';
+
+@import url('@carbon/charts/styles.css');
+// Optional: Custom transitions for smooth theme switching
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}

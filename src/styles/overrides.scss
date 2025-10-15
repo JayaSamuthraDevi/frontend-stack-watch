@@ -1,0 +1,8 @@
+.cds--content {
+  padding: 0 !important;
+  position: relative !important;
+}
+// to remove outline on toggle
+.cds--toggle__button:focus + .cds--toggle__label .cds--toggle__switch::after, .cds--toggle:not(.cds--toggle--disabled):active .cds--toggle__switch::after {
+ outline: none !important;
+}

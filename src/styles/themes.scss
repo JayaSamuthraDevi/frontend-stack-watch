@@ -1,0 +1,69 @@
+ //for implementing themes
+ @use '@carbon/themes';
+ @use '@carbon/react/scss/themes' as *;
+ @use '@carbon/themes/scss/themes' as theme-vars;
+
+ $primary-color: #092861;
+ $primary-color-50: #cfe6f9;
+ $secondary-color: #c6faf7;
+ $background-color: #b2d3ce;
+ $border-color: oklch(1 0 0 / 10%);
+ $background: oklch(1 0 0);
+ $foreground: oklch(0.145 0 0);
+ $card: oklch(1 0 0);
+ $card-foreground: oklch(0.145 0 0);
+ $popover: oklch(1 0 0);
+ $popover-foreground: oklch(0.145 0 0);
+ $primary: oklch(0.205 0 0);
+ $primary-foreground: oklch(0.985 0 0);
+ $secondary: oklch(0.97 0 0);
+ $secondary-foreground: oklch(0.205 0 0);
+ $muted: oklch(0.97 0 0);
+ $muted-foreground: oklch(0.556 0 0);
+ $accent: oklch(0.97 0 0);
+ $accent-foreground: oklch(0.205 0 0);
+ $destructive: oklch(0.577 0.245 27.325);
+ $border: oklch(0.922 0 0);
+ $input: oklch(0.922 0 0);
+ $ring: oklch(0.708 0 0);
+ $link-text-color: oklch(62.494% 0.18225 258.654);
+
+ //specify to ake default theme colors
+ :root[data-carbon-theme='white'] {
+   @include themes.theme(theme-vars.$white);
+   --cds-background: #{$background};
+   --cds-text-primary: #{$primary};
+   --cds-text-secondary: #404040;
+   --sky-color:#{$secondary-color};
+   --cds-button-primary: #092861;
+  --cds-button-primary-hover: #2959dd;
+   --cds-card:#{$card};
+   --cds-card-foreground: #{$card-foreground};
+   --cds-popover: #{$popover};
+   --cds-popover-foreground: #{$popover-foreground};
+   --cds-primary: #{$primary};
+   --cds-primary-foreground: #{$primary-foreground};
+   --cds-secondary: #{$secondary};
+   --cds-secondary-foreground: #{$secondary-foreground};
+   --cds-muted: #{$muted};
+   --cds-muted-foreground: #{$muted-foreground};
+   --cds-accent: #{$accent};
+   --cds-accent-foreground: #{$accent-foreground};
+   --cds-destructive: #{$destructive};
+   --cds-border: #{$border};
+   --cds-input: #{$input};
+   --cds-ring: #{$ring};
+   --cds-text-disabled: #{$muted-foreground};
+   --cds-text-placeholder: #{$muted-foreground};
+   --link-text-color:#{$link-text-color};
+ }
+
+ :root[data-carbon-theme='g100'] {
+   @include themes.theme(theme-vars.$g100);
+  //  --cds-background: #{$background};
+  //  --cds-text-primary: #{$primary};
+  //  --cds-text-secondary: #404040;
+  //  --sky-color:#{$secondary-color};
+  //  --cds-border: oklch(1 0 0 / 10%);
+  //  --cds-button-primary: #092861;
+ }
