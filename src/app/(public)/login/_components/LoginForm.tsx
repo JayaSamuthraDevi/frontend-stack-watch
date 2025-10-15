@@ -14,8 +14,7 @@ import Link from "next/link";
 import { useToast } from "@/contexts/ToastContext";
 import Image from "next/image";
 import help_icon from "../../../../../public/assets/icons/help.svg";
-import LogoGoogle from "../../../../../public/assets/icons/google.svg";
-import { LogoGithub } from "@carbon/icons-react"; 
+import { LogoGithub } from "@carbon/icons-react";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -96,7 +95,7 @@ export default function LoginForm() {
     <>
       <h3>Login</h3>
       <div className="cds--type-body-compact-01 mt-2">
-        <span>Don't have an account? </span>
+        <span>Don&apos;t have an account? </span>
         <Link href="/signup" className="link_text">
           Sign up
         </Link>

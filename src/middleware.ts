@@ -1,16 +1,16 @@
 // middleware.ts
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 // const PUBLIC_PATHS = ['/login', '/signup', '/'];
 
-export function middleware(request: NextRequest) {
+export function middleware() {
   //  const { pathname } = request.nextUrl;
   // const token = request.cookies.get('access_token')?.value;
 
   // const isPublicPath = PUBLIC_PATHS.includes(pathname);
   // if (!isPublicPath && !token) {
   //   const loginUrl = new URL('/login', request.url);
-  //   loginUrl.searchParams.set('from', pathname); 
+  //   loginUrl.searchParams.set('from', pathname);
   //   return NextResponse.redirect(loginUrl);
   // }
   // else if(isPublicPath && token) {

@@ -8,12 +8,7 @@ export const useCarbonTheme = () => {
   const {  setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    setCarbonTheme(resolvedTheme as CarbonThemeType)
-  }, []);
-
-  const setCarbonTheme = (newTheme: CarbonThemeType) => {
+    const setCarbonTheme = (newTheme: CarbonThemeType) => {
     setTheme(newTheme);
 
     // Update CSS custom properties for Carbon
@@ -24,6 +19,11 @@ export const useCarbonTheme = () => {
       sessionStorage.setItem('carbon-theme', newTheme);
     }
   };
+
+  useEffect(() => {
+    setMounted(true);
+    setCarbonTheme(resolvedTheme as CarbonThemeType)
+  }, []);
 
   const getCurrentTheme = (): CarbonThemeType => {
     if (!mounted) return 'white';

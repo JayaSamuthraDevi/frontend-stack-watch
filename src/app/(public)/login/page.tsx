@@ -1,12 +1,12 @@
-import LoginForm from './_components/LoginForm';
+import { Suspense } from "react";
+import LoginForm from "./_components/LoginForm";
 
-const page = () => {
+const Page = () => {
   return (
-    <>
-   
+    <Suspense fallback={<div>Loading...</div>}>
       <LoginForm />
-      </>
-  )
-}
+    </Suspense>
+  );
+};
 
-export default page
+export default Page;

@@ -371,7 +371,7 @@ const CloudBillingPage: React.FC = () => {
               id="budget-threshold"
               label="Budget Alert Threshold ($)"
               value={budgetAlert.threshold}
-              onChange={(e) => setBudgetAlert(prev => ({ ...prev, threshold: 0 }))}
+              onChange={() => setBudgetAlert(prev => ({ ...prev, threshold: 0 }))}
               min={0}
               step={100}
             />
